@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bookedinlagos</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --dark: #0A0A0A;
+    --dark2: #141414;
+    --dark3: #1E1E1E;
+    --cream: #F5EDD6;
+    --cream2: #EAD9B4;
+    --text: #F0E8D5;
+    --muted: #8A7A60;
+  }
+
+  body {
+    background: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 10%, rgba(201,168,76,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 90%, rgba(201,168,76,0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-ring {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 1.5px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+
+  .logo-ring::before {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, #2a2218, #0e0c09);
+    border: 0.5px solid rgba(201,168,76,0.3);
+  }
+
+  .logo-initial {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+    letter-spacing: -1px;
+  }
+
+  .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--cream);
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .tagline {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+
+  .divider {
+    width: 40px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 40px;
+    animation: fadeUp 0.8s 0.35s ease both;
+  }
+
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    padding: 16px 22px;
+    background: var(--dark2);
+    border: 0.5px solid rgba(201,168,76,0.2);
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .link-btn:nth-child(1) { animation-delay: 0.4s; }
+  .link-btn:nth-child(2) { animation-delay: 0.5s; }
+  .link-btn:nth-child(3) { animation-delay: 0.6s; }
+
+  .link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    border-radius: inherit;
+  }
+
+  .link-btn:hover { border-color: rgba(201,168,76,0.5); transform: translateY(-2px); }
+  .link-btn:hover::before { opacity: 1; }
+  .link-btn:active { transform: translateY(0) scale(0.99); }
+
+  .btn-wa::before  { background: rgba(37,211,102,0.06); }
+  .btn-ig::before  { background: rgba(228,64,95,0.06); }
+  .btn-tt::before  { background: rgba(255,255,255,0.04); }
+
+  .link-btn:hover .arrow { transform: translateX(4px); opacity: 1; }
+
+  .icon-wrap {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .icon-wa { background: rgba(37,211,102,0.12); }
+  .icon-ig { background: rgba(228,64,95,0.12); }
+  .icon-tt { background: rgba(255,255,255,0.08); }
+
+  .icon-wrap svg { width: 20px; height: 20px; }
+
+  .btn-text { flex: 1; }
+  .btn-label { display: block; font-size: 15px; font-weight: 500; color: var(--cream); }
+  .btn-sub { display: block; font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+  .arrow {
+    font-size: 16px;
+    color: var(--gold);
+    opacity: 0.5;
+    transition: all 0.25s ease;
+  }
+
+  .footer {
+    margin-top: 40px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s 0.8s ease both;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="logo-ring">
+    <span class="logo-initial">B</span>
+  </div>
+
+  <h1 class="name">Bookedinlagos</h1>
+  <p class="tagline">Lagos &middot; Nigeria</p>
+  <div class="divider"></div>
+
+  <div class="links">
+
+    <a href="https://wa.me/2347074118889" class="link-btn btn-wa" target="_blank" rel="noopener">
+      <div class="icon-wrap icon-wa">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" fill="#25D366"/>
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.89.525 3.66 1.438 5.168L2 22l4.978-1.413A9.953 9.953 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.946 7.946 0 01-4.274-1.247l-.306-.182-3.184.904.907-3.1-.2-.318A7.946 7.946 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8z" fill="#25D366"/>
+        </svg>
+      </div>
+      <span class="btn-text">
+        <span class="btn-label">WhatsApp</span>
+        <span class="btn-sub">Chat with us</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="https://instagram.com/bookedinlagos" class="link-btn btn-ig" target="_blank" rel="noopener">
+      <div class="icon-wrap icon-ig">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#E4405F" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" stroke="#E4405F" stroke-width="2"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="#E4405F"/>
+        </svg>
+      </div>
+      <span class="btn-text">
+        <span class="btn-label">Instagram</span>
+        <span class="btn-sub">@bookedinlagos</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>
+
+    <a href="https://tiktok.com/@bookedinlagos" class="link-btn btn-tt" target="_blank" rel="noopener">
+      <div class="icon-wrap icon-tt">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.95a8.16 8.16 0 004.77 1.52V7.02a4.85 4.85 0 01-1-.33z" fill="#fff"/>
+        </svg>
+      </div>
+      <span class="btn-text">
+        <span class="btn-label">TikTok</span>
+        <span class="btn-sub">@bookedinlagos</span>
+      </span>
+      <span class="arrow">→</span>
+    </a>
+
+  </div>
+
+  <p class="footer">bookedinlagos &copy; 2026</p>
+</div>
+</body>
+</html>
